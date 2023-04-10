@@ -1,38 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS - Project Starter
 
-## Getting Started
+A simple template with some dependencies that I use to start my projects.
 
-First, run the development server:
+# ⚙️ Dependencies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- React-hook-form
+- Yup
+- Zustand
+- ChakraUI
+- Inversify
+- React-query
+- Jest
+- React Testing Library
+- Typescript
+- Husky
+- Lint-staged
+- Axios
+
+# How to clone ?
+
+Run the following command:
+
+```ts
+npx degit l-fernandocosta/web-starter <name of the project>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After this step, configure the husky:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Install the dependencie -
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```ts
+npx husky-init && npm i
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2. As default, husky create a file named `pre-commit` with the command `npm test`.
+   Update the command to `npm run lint-staged`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. `package.json` already comes with the following configuration, but feel free to change it:
 
-## Learn More
+```ts
+  "lint-staged": {
+    "*.(tsx|ts)": "eslint --cache --fix",
+    "*": "prettier --write --ignore-unknown"
+  }
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. You are ready to go ! 🔥
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> If you dont like the `page.tsx` route extension, you can change it on the
+> `next.config.js`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```ts
+/** @type {import('next').NextConfig} */
 
-## Deploy on Vercel
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  pageExtensions: ["page.tsx"], // <--- Update here
+};
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+module.exports = nextConfig;
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
